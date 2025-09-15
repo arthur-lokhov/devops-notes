@@ -115,3 +115,4 @@ nav:
   - '📝 Заметки':
     - 'notes/index.md'
     - 'notes/vpn_setup_guide.md'
+    - 'notes/mac_android_dev_setup.md'
