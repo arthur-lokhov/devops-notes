@@ -111,5 +111,6 @@ nav:
     - 'tools/ssh.md'
     - 'tools/colima.md'
     - 'tools/gpg.md'
+    - 'tools/git.md'
   - '📝 Заметки':
     - 'notes/index.md'
