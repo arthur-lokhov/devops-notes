@@ -109,5 +109,6 @@ nav:
   - '🛠️ Инструменты':
     - 'tools/index.md'
     - 'tools/ssh.md'
+    - 'tools/colima.md'
   - '📝 Заметки':
     - 'notes/index.md'
