@@ -1,0 +1,113 @@
+site_name: Android FOSS Notes
+site_description: Все об открытой разработке под Android, рутинге, приватности и многом другом.
+site_author: oni
+site_url: https://oni.github.io/android-foss-notes
+extra:
+  homepage: https://oni.github.io/android-foss-notes
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/oni/android-foss-notes.git
+  consent:
+    title: Использование cookies
+    accent:
+      - accept
+      - manage
+      - reject
+    description: >-
+      Мы используем cookies для распознавания ваших повторных посещений и предпочтений, а также для измерения эффективности нашей документации и того, насколько легко пользователи находят нужную информацию. Согласившись, вы помогаете нам сделать сайт лучше и удобнее.
+  generator: false
+copyright: >
+  Copyright &copy; 2025 Android FOSS Notes — <a href="#__consent">Изменить настройки cookies</a>
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  font:
+    text: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+    - navigation.expand
+    - navigation.sections
+    - header.autohide
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+markdown_extensions:
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.magiclink
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - def_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+plugins:
+  - search
+  - tags
+  - privacy
+nav:
+  - '🏠 Главная': 'index.md'
+  - '⚙️ Устройство Android OC':
+    - 'os/index.md'
+  - '📱 Android Разработка':
+    - 'development/index.md'
+    # - 'Kotlin':
+    #   - 'development/kotlin/basics.md'
+    #   - 'development/kotlin/coroutines.md'
+    #   - 'development/kotlin/jetpack_compose.md'
+    # - 'Rust':
+    #   - 'development/rust/index.md'
+    #   - 'development/rust/ndk.md'
+  - '🔓 Рутинг и Кастомизация':
+    - 'rooting/index.md'
+    # - 'Magisk':
+    #   - 'rooting/magisk/index.md'
+    #   - 'rooting/magisk/modules.md'
+    # - 'Кастомные прошивки (ROMs)':
+    #   - 'rooting/roms/index.md'
+    #   - 'rooting/roms/lineageos.md'
+    #   - 'rooting/roms/grapheneos.md'
+    # - 'Восстановление (Recovery)':
+    #   - 'rooting/recovery/twrp.md'
+  - '🔒 Приватность и Безопасность':
+    - 'privacy/index.md'
+    # - 'Трекеры и блокировка': 'privacy/trackers.md'
+    # - 'Безопасные приложения': 'privacy/secure_apps.md'
+    # - 'Настройка системы': 'privacy/system_hardening.md'
+  - '🐧 FOSS Приложения':
+    - 'apps/index.md'
+    # - 'F-Droid': 'apps/f-droid.md'
+    # - 'Каталог': 'apps/catalog.md'
+  - '🛠️ Инструменты':
+    - 'tools/index.md'
+    - 'tools/ssh.md'
+  - '📝 Заметки':
+    - 'notes/index.md'
