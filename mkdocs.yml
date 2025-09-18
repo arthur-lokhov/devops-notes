@@ -1,12 +1,12 @@
-site_name: Android FOSS Notes
-site_description: Все об открытой разработке под Android, рутинге, приватности и многом другом.
+site_name: DevOps Notes
+site_description: Все об администрировании Linux, DevOps, Android рутинге, приватности и многом другом.
 site_author: oni
-site_url: https://oni.github.io/android-foss-notes
+site_url: https://oni.github.io/devops-notes
 extra:
-  homepage: https://oni.github.io/android-foss-notes
+  homepage: https://oni.github.io/devops-notes
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/oni/android-foss-notes.git
+      link: https://github.com/oni/devops-notes.git
   consent:
     title: Использование cookies
     accent:
@@ -17,7 +17,7 @@ extra:
       Мы используем cookies для распознавания ваших повторных посещений и предпочтений, а также для измерения эффективности нашей документации и того, насколько легко пользователи находят нужную информацию. Согласившись, вы помогаете нам сделать сайт лучше и удобнее.
   generator: false
 copyright: >
-  Copyright &copy; 2025 Android FOSS Notes — <a href="#__consent">Изменить настройки cookies</a>
+  Copyright &copy; 2025 DevOps Notes — <a href="#__consent">Изменить настройки cookies</a>
 
 theme:
   name: material
@@ -75,37 +75,36 @@ plugins:
   - privacy
 nav:
   - '🏠 Главная': 'index.md'
-  - '⚙️ Устройство Android OC':
-    - 'os/index.md'
-  - '📱 Android Разработка':
-    - 'development/index.md'
-    # - 'Kotlin':
-    #   - 'development/kotlin/basics.md'
-    #   - 'development/kotlin/coroutines.md'
-    #   - 'development/kotlin/jetpack_compose.md'
-    # - 'Rust':
-    #   - 'development/rust/index.md'
-    #   - 'development/rust/ndk.md'
-  - '🔓 Рутинг и Кастомизация':
-    - 'rooting/index.md'
-    # - 'Magisk':
-    #   - 'rooting/magisk/index.md'
-    #   - 'rooting/magisk/modules.md'
-    # - 'Кастомные прошивки (ROMs)':
-    #   - 'rooting/roms/index.md'
-    #   - 'rooting/roms/lineageos.md'
-    #   - 'rooting/roms/grapheneos.md'
-    # - 'Восстановление (Recovery)':
-    #   - 'rooting/recovery/twrp.md'
-  - '🔒 Приватность и Безопасность':
-    - 'privacy/index.md'
-    # - 'Трекеры и блокировка': 'privacy/trackers.md'
-    # - 'Безопасные приложения': 'privacy/secure_apps.md'
-    # - 'Настройка системы': 'privacy/system_hardening.md'
-  - '🐧 FOSS Приложения':
-    - 'apps/index.md'
-    # - 'F-Droid': 'apps/f-droid.md'
-    # - 'Каталог': 'apps/catalog.md'
+  - '🐧 Linux': 'linux/index.md'
+  - '🪟 Windows':
+    - 'windows/index.md'
+    - 'windows/installation.md'
+    - 'windows/configuration.md'
+  - '🌐 Сети': 'networking/index.md'
+  - '🧱 Контейнеры':
+    - 'containers/index.md'
+    - 'containers/base.md'
+    - 'containers/lxc.md'
+    - 🐳 Docker:
+      - 'containers/docker/installation.md'
+      - 'containers/docker/architecture.md'
+      - 'containers/docker/dockerfile.md'
+      - 'containers/docker/buildkit.md'
+      - 'containers/docker/filesystem.md'
+      - 'containers/docker/registry.md'
+      - 'containers/docker/docker-cli.md'
+      - 'containers/docker/processes.md'
+      - 'containers/docker/volumes.md'
+      - 'containers/docker/networks.md'
+      - 'containers/docker/logging.md'
+      - 'containers/docker/compose.md'
+      - 'containers/docker/debugging.md'
+      - 'containers/docker/security.md'
+      - 'containers/docker/plugins.md'
+  - '🚀 CI/CD': 'cicd/index.md'
+  - '🏗️ IaC': 'iac/index.md'
+  - '📈 Мониторинг': 'monitoring/index.md'
+  - '💻 Разработка': 'development/index.md'
   - '🛠️ Инструменты':
     - 'tools/index.md'
     - 'tools/ssh.md'
