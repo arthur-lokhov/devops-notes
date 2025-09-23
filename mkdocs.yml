@@ -43,7 +43,6 @@ theme:
 markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - pymdownx.details
   - pymdownx.critic
   - pymdownx.caret
@@ -84,10 +83,14 @@ nav:
   - '🧱 Контейнеры':
     - 'containers/index.md'
     - 'containers/base.md'
-    - 'containers/lxc.md'
-    - 🐳 Docker:
+    - 'containers/oci.md'
+    - '☁️ Incus (LXD)':
+      - 'containers/incus/index.md'
+      - 'containers/incus/cli.md'
+      - 'containers/incus/lxc.md'
+    - '🐳 Docker':
+      - 'containers/docker/index.md'
       - 'containers/docker/installation.md'
-      - 'containers/docker/architecture.md'
       - 'containers/docker/dockerfile.md'
       - 'containers/docker/buildkit.md'
       - 'containers/docker/filesystem.md'
@@ -101,6 +104,8 @@ nav:
       - 'containers/docker/debugging.md'
       - 'containers/docker/security.md'
       - 'containers/docker/plugins.md'
+    - '☸️ Kubernetes':
+      - 'containers/kubernetes/index.md'
   - '🚀 CI/CD': 'cicd/index.md'
   - '🏗️ IaC': 'iac/index.md'
   - '📈 Мониторинг': 'monitoring/index.md'

@@ -1,5 +1,7 @@
 ---
-title: Архитектура Docker
+title: Docker
+hide:
+  - toc
 ---
 
 # 🏗️ Архитектура Docker
