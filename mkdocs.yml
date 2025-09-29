@@ -78,7 +78,7 @@ nav:
   - '🪟 Windows':
     - 'windows/index.md'
     - 'windows/installation.md'
-    - 'windows/configuration.md'
+    - 'windows/deployment.md'
   - '🌐 Сети': 'networking/index.md'
   - '🧱 Контейнеры':
     - 'containers/index.md'
@@ -106,17 +106,55 @@ nav:
       - 'containers/docker/plugins.md'
     - '☸️ Kubernetes':
       - 'containers/kubernetes/index.md'
-  - '🚀 CI/CD': 'cicd/index.md'
+  - '🚀 CI/CD':
+    - 'cicd/index.md'
+    - '📖 Концепции':
+      - 'Основы и Принципы': 'cicd/concepts/basics.md'
+      - 'Архитектура': 'cicd/concepts/architecture.md'
+      - 'Стратегии Развертывания': 'cicd/concepts/deployment-strategies.md'
+      - 'DevSecOps': 'cicd/concepts/devsecops.md'
+      - 'Управление Секретами': 'cicd/concepts/secrets-management.md'
+      - 'Управление Ресурсами и Надежность': 'cicd/concepts/scalability-observability.md'
+      - 'Современные Паттерны Доставки': 'cicd/concepts/advanced-patterns.md'
+    - '🛠️ Реализации':
+      - 'cicd/implementations/index.md'
+      - '🦊 GitLab':
+        - 'cicd/implementations/gitlab/index.md'
+        - 'Архитектура': 'cicd/implementations/gitlab/architecture.md'
+        - 'IAM': 'cicd/implementations/gitlab/iam.md'
+        - 'Репозитории': 'cicd/implementations/gitlab/repositories.md'
+        - 'CI/CD': 'cicd/implementations/gitlab/ci-cd.md'
+        - 'Registry & Мониторинг': 'cicd/implementations/gitlab/registry-monitoring.md'
+        - 'Администрирование': 'cicd/implementations/gitlab/admin-devsecops.md'
   - '🏗️ IaC': 'iac/index.md'
-  - '📈 Мониторинг': 'monitoring/index.md'
+  - '📈 Мониторинг':
+    - 'Обзор': 'monitoring/index.md'
+    - '📖 Концепции':
+      - 'Ключевые концепции': 'monitoring/key-concepts.md'
+      - 'Метрики': 'monitoring/metrics.md'
+      - 'Логирование': 'monitoring/logging.md'
+      - 'Трейсинг': 'monitoring/tracing.md'
+      - 'Алертинг и Инциденты': 'monitoring/alerting.md'
+      - 'OpenTelemetry': 'monitoring/opentelemetry.md'
+    - '🛠️ Реализации':
+      - 'Zabbix':
+        - 'monitoring/zabbix/roadmap.md'
   - '💻 Разработка': 'development/index.md'
   - '🛠️ Инструменты':
     - 'tools/index.md'
-    - 'tools/ssh.md'
-    - 'tools/colima.md'
-    - 'tools/gpg.md'
-    - 'tools/git.md'
+    - '🧰 Основные':
+      - 'Git': 'tools/core/git.md'
+      - 'GPG': 'tools/core/gpg.md'
+      - 'SSH': 'tools/core/ssh.md'
+    - '📦 Контейнеры':
+      - 'Colima': 'tools/containers/colima.md'
+      - 'Devcontainers': 'tools/containers/devcontainers.md'
+    - '💿 Гипервизоры':
+      - 'Обзор': 'tools/hypervisors/index.md'
+      - 'Proxmox VE': 'tools/hypervisors/proxmox.md'
+      - 'UTM (macOS)': 'tools/hypervisors/utm.md'
+    - 'AnyDesk': 'tools/anydesk.md'
   - '📝 Заметки':
     - 'notes/index.md'
+    - 'notes/cncf.md'
     - 'notes/vpn_setup_guide.md'
-    - 'notes/mac_android_dev_setup.md'
