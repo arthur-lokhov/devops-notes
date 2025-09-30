@@ -2,7 +2,7 @@ version: '3'
 services:
   mkdocs:
     image: squidfunk/mkdocs-material
-    container_name: android-foss-notes
+    container_name: devops-notes
     volumes:
       - .:/docs
     ports:

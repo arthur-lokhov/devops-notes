@@ -106,6 +106,7 @@ nav:
       - 'containers/docker/plugins.md'
     - '☸️ Kubernetes':
       - 'containers/kubernetes/index.md'
+      - 'Архитектура': 'containers/kubernetes/architecture.md'
   - '🚀 CI/CD':
     - 'cicd/index.md'
     - '📖 Концепции':
