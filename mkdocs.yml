@@ -83,6 +83,7 @@ nav:
   - '🧱 Контейнеры':
     - 'containers/index.md'
     - 'containers/base.md'
+    - 'containers/concepts.md'
     - 'containers/oci.md'
     - '☁️ Incus (LXD)':
       - 'containers/incus/index.md'
@@ -106,6 +107,28 @@ nav:
       - 'containers/docker/plugins.md'
     - '☸️ Kubernetes':
       - 'containers/kubernetes/index.md'
+      - 'Архитектура': 'containers/kubernetes/architecture.md'
+      - 'Основные концепции': 'containers/kubernetes/concepts.md'
+      - 'Рабочие нагрузки': 'containers/kubernetes/workloads.md'
+      - 'Сеть': 'containers/kubernetes/networking.md'
+      - 'Хранилище': 'containers/kubernetes/storage.md'
+      - 'Конфигурация': 'containers/kubernetes/configuration.md'
+      - 'Безопасность': 'containers/kubernetes/security.md'
+      - 'Инструменты': 'containers/kubernetes/tools.md'
+      - 'Helm': 'containers/kubernetes/helm.md'
+      - 'Kustomize': 'containers/kubernetes/kustomize.md'
+      - 'Наблюдаемость': 'containers/kubernetes/observability.md'
+      - 'CI/CD и GitOps': 'containers/kubernetes/cicd-gitops.md'
+      - 'Production Readiness': 'containers/kubernetes/production-readiness.md'
+      - 'Расширяемость': 'containers/kubernetes/extensibility.md'
+      - 'Кейсы и best practices': 'containers/kubernetes/use-cases.md'
+      - 'Экосистема CNCF': 'containers/kubernetes/cncf-ecosystem.md'
+      - 'Service Mesh': 'containers/kubernetes/service-mesh.md'
+      - 'Производительность': 'containers/kubernetes/performance.md'
+      - 'Compliance и Аудит': 'containers/kubernetes/compliance-audit.md'
+      - 'Platform Engineering': 'containers/kubernetes/platform-engineering.md'
+      - 'Debugging и Chaos': 'containers/kubernetes/debugging-chaos.md'
+      - 'FinOps': 'containers/kubernetes/finops.md'
   - '🚀 CI/CD':
     - 'cicd/index.md'
     - '📖 Концепции':
@@ -143,18 +166,22 @@ nav:
   - '🛠️ Инструменты':
     - 'tools/index.md'
     - '🧰 Основные':
-      - 'Git': 'tools/core/git.md'
-      - 'GPG': 'tools/core/gpg.md'
-      - 'SSH': 'tools/core/ssh.md'
+      - 'tools/core/git.md'
+      - 'tools/core/gpg.md'
+      - 'tools/core/ssh.md'
     - '📦 Контейнеры':
-      - 'Colima': 'tools/containers/colima.md'
-      - 'Devcontainers': 'tools/containers/devcontainers.md'
+      - 'tools/containers/colima.md'
+      - 'tools/containers/devcontainers.md'
+    - '☸️ Kubernetes':
+      - 'tools/etcd.md'
     - '💿 Гипервизоры':
-      - 'Обзор': 'tools/hypervisors/index.md'
-      - 'Proxmox VE': 'tools/hypervisors/proxmox.md'
-      - 'UTM (macOS)': 'tools/hypervisors/utm.md'
-    - 'AnyDesk': 'tools/anydesk.md'
+      - 'tools/hypervisors/index.md'
+      - 'tools/hypervisors/proxmox.md'
+      - 'tools/hypervisors/utm.md'
+    - '👮 Администрирование':
+      - 'tools/admin/anydesk.md'
   - '📝 Заметки':
     - 'notes/index.md'
     - 'notes/cncf.md'
     - 'notes/vpn_setup_guide.md'
+    - 'notes/company-assessment-guide.md'
