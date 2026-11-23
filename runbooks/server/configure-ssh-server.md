@@ -49,6 +49,7 @@ OpenSSH раскрывает шаблон `*.conf` в лексикографич
 └── sshd_config.d/
     ├── 00-ssh-hardening.conf
     ├── 20-ssh-source-penalties.conf   # необязательное расширение OpenSSH 9.8+
+    ├── 25-ssh-role-gssapi.conf        # если используется Kerberos / GSSAPI
     ├── 30-allow-users.conf            # ограничение круга пользователей
     ├── 40-ssh-role-jump.conf          # если сервер выполняет роль Jump Host
     ├── 41-ssh-role-code-server.conf   # если разрешён доступ к code-server
@@ -114,14 +115,12 @@ ClientAliveCountMax 3
 TCPKeepAlive yes
 UnusedConnectionTimeout none
 
-KerberosAuthentication no
-GSSAPIAuthentication no
-GSSAPICleanupCredentials yes
-
 Compression no
 ```
 
 Файл намеренно не содержит директив, которые либо не дают дополнительного эффекта, либо делают базовый профиль менее переносимым. Например, в нём нет `PerSourcePenalties`, `RefuseConnection`, `ChannelTimeout none`, `RekeyLimit 0 0`, `PermitOpen any` и `PermitListen any`. Причины разобраны ниже.
+
+Также в нём нет `KerberosAuthentication`, `GSSAPIAuthentication` и `GSSAPICleanupCredentials`: без пакета с поддержкой GSSAPI эти директивы считаются неподдерживаемыми, а средам без Kerberos они не нужны. Настройка Kerberos/GSSAPI описана отдельным сценарием.
 
 ### Аутентификация
 
@@ -199,11 +198,7 @@ Compression no
 
 `ChannelTimeout` в базовый профиль не включён. По умолчанию OpenSSH не закрывает каналы из-за их бездействия. Если позже понадобится закрывать, например, простаивающие TCP-forwarding каналы, следует задать конкретный тип и интервал, например `direct-tcpip=30m`. Значение `ChannelTimeout none` не является корректной заменой отсутствующей директивы: параметр ожидает пары `тип=интервал`.
 
-### Kerberos, GSSAPI и PAM
-
-`KerberosAuthentication no` и `GSSAPIAuthentication no` отключают неиспользуемые механизмы входа через Kerberos и GSSAPI. Если организация использует Active Directory или централизованную Kerberos-аутентификацию, этот раздел нельзя копировать без адаптации.
-
-`GSSAPICleanupCredentials yes` сохраняет безопасное поведение очистки GSSAPI credentials на случай, если GSSAPI будет включён позднее.
+### PAM
 
 В профиле намеренно не задан `UsePAM`. На Debian и RHEL PAM может участвовать в проверках учётной записи и создании пользовательской сессии, даже когда парольная и keyboard-interactive аутентификация отключены. Не следует отключать PAM только ради декларации «вход по ключу»: сначала нужно понимать, какие PAM account/session-модули использует система.
 
@@ -255,6 +250,33 @@ PerSourcePenalties crash:10m authfail:15s invaliduser:15s refuseconnection:30s n
 Для исключения доверенных адресов предусмотрена директива `PerSourcePenaltyExemptList`. Её следует использовать только для действительно доверенных и стабильных адресов, избегая широких диапазонов без необходимости.
 
 **Примечание**: выбранные значения являются собственной политикой безопасности, а не стандартными значениями OpenSSH. Отдельный файл нужен для явного документирования и фиксации этой политики. Также важно понимать, что `PerSourcePenalties` особенно полезен против интенсивных параллельных попыток: он не гарантирует блокировку каждого бота, который выполняет редкие последовательные подключения.
+
+## Сценарий: Kerberos / GSSAPI аутентификация
+
+Директивы `KerberosAuthentication`, `GSSAPIAuthentication` и `GSSAPICleanupCredentials` намеренно не входят в базовый профиль. Поддержка GSSAPI не всегда собрана в основной пакет `openssh-server`: на части дистрибутивов для неё требуется отдельный пакет, например `openssh-server-gssapi`. Если такой пакет не установлен, `sshd` при проверке конфигурации сообщает, что соответствующие директивы не поддерживаются, а `sshd -t` завершается с ошибкой разбора. Поэтому директивы вынесены в отдельный ролевой файл, который включается только на серверах, действительно использующих Kerberos.
+
+Для того, чтобы включить поддержку Kerberos и GSSAPI, создадим файл: `/etc/ssh/sshd_config.d/25-ssh-role-gssapi.conf`:
+
+```txt
+KerberosAuthentication yes
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials yes
+```
+
+`KerberosAuthentication yes` разрешает аутентификацию по протоколу Kerberos, при которой пароль пользователя проверяется через KDC.
+
+`GSSAPIAuthentication yes` разрешает GSSAPI-аутентификацию, используемую, например, клиентами ssh с `GSSAPIAuthentication yes` и инструментами вроде kinit + ssh -K.
+
+`GSSAPICleanupCredentials yes` предписывает sshd очищать GSSAPI credentials после завершения сессии, чтобы они не оставались доступными другим процессам пользователя.
+
+Если среда использует только GSSAPI, а вход по паролю через Kerberos не нужен, можно оставить `KerberosAuthentication no`, а `GSSAPIAuthentication` включить. Для типовой интеграции с Active Directory или FreeIPA обычно включают обе директивы.
+
+### Совместимость с базовым профилем
+
+Базовый профиль задаёт `AuthenticationMethods publickey`. Это означает, что при включении GSSAPI нужно явно решить, как методы сочетаются:
+
+- Если Kerberos/GSSAPI должен быть дополнительным фактором поверх ключа, в ролевом файле задаётся, например, `AuthenticationMethods publickey,gssapi-with-mic`.
+- Если Kerberos/GSSAPI должен быть альтернативным способом входа, базовая директива `AuthenticationMethods publickey` должна быть переопределена — либо глобально, либо через `Match` для выделенной группы.
 
 ## Сценарий: ограничение круга пользователей
 
